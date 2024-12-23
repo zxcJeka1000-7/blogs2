@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Платформа для блогов</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1 class="header-title">Платформа для блогов</h1>
+        <button id="toggleButton" onclick="toggleBackground()">🌗</button>
+    </header>
+    <div class="content">
+        <h2>Добро пожаловать на платформу для блогов!</h2>
+        <p>Здесь вы можете делиться своими мыслями и идеями.</p>
+    </div>
+   <div class="blog-container">
+        <div class="blog-item">
+            <h3 class="blog-title" onclick="toggleContent(this)">Сборник несмешных шуток 1</h3>
+            <div class="blog-content">
+                <p>– Чем отличается программист на JavaScript от программиста на TypeScript?</p>
+                <p>– Один всегда удивляется, когда на экране выводится ошибка, а другой – когда её нет.</p>
+                <br>
+
+                <p>  – Как программист на Django создает полноценный сайт за один день?</p>
+                <p>  – Включает django-admin и добавляет модели.</p>
+                <br>
+                <p> – Как программист на JavaScript разговаривает с JSON?</p>
+                <p> – Он открывает его, говорит "parse!", а JSON в ответ: "Unexpected token in JSON position 0."</p>
+            </div>
+        </div>
+        <div class="blog-item">
+            <h3 class="blog-title" onclick="toggleContent(this)">Блог 2</h3>
+            <div class="blog-content">
+                <img src="https://cs11.pikabu.ru/post_img/big/2020/11/27/8/1606480690139393176.jpg" alt="Изображение блога">
+            </div>
+        </div>
+        <div class="blog-item">
+            <h3 class="blog-title" onclick="toggleContent(this)">Блог 3</h3>
+            <div class="blog-content">
+                <div class="tenor-gif-embed" data-postid="16330051" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/hedgehog-cute-food-unroll-feet-gif-16330051">Hedgehog Cute GIF</a>from <a href="https://tenor.com/search/hedgehog-gifs">Hedgehog GIFs</a></div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+            </div>
+        </div>
+
+
+
+
+
+    <script>
+        //для аккордеона:
+function toggleContent(element) {
+            const content = element.nextElementSibling;
+            // Переключение видимости
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+
+
+        // Смена фона
+function toggleBackground() {
+    const currentTheme = document.body.style.backgroundColor;
+    const newTheme = currentTheme === 'pink' ? 'orange' : 'pink';
+    document.body.style.backgroundColor = newTheme;
+    document.cookie = `theme=${newTheme};path=/`;
+    
+    // Добавляем вывод всех cookies в консоль
+    console.log(document.cookie);
+}
+
+        // Сохранение темы из cookie
+        window.onload = () => {
+            const cookies = document.cookie.split('; ').reduce((acc, cookie) => {
+                const [name, value] = cookie.split('=');
+                acc[name] = value;
+                return acc;
+            }, {});
+            if (cookies.theme) {
+                document.body.style.backgroundColor = cookies.theme;
+            }
+        };
+    </script>
+</body>
+</html>
