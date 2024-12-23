@@ -1,7 +1,7 @@
 
 body {
     margin: 0;
-    background-color: #f0f0f0; /* Светло-серый фон */
+    background-color: pink; /* Светло-серый фон */
     font-family: Arial, sans-serif;
     transition: background-color 0.3s ease; /* Плавный переход */
 }
